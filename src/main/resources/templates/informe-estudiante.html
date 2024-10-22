@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Informe del Estudiante</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="../img/iconoweb.png" type="image/x-icon"> <!-- Icono favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Importar fuente Poppins -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Cambiar a la fuente Poppins */
+            background: url('https://cdn.pixabay.com/photo/2017/09/22/11/44/bullying-2775272_640.jpg') no-repeat center center fixed; /* Fondo de la página */
+            background-size: cover;
+            color: #333; /* Color del texto */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #6a1b9a; /* Color morado */
+            font-weight: 600; /* Peso de la fuente */
+        }
+
+        h2 {
+            color: #6a1b9a; /* Color morado */
+        }
+
+        p {
+            font-size: 1.1rem; /* Tamaño de fuente */
+            margin: 10px 0; /* Espacio entre párrafos */
+        }
+
+        .nivel-1 {
+            color: red;
+        }
+
+        .nivel-2 {
+            color: orange;
+        }
+
+        .nivel-3 {
+            color: yellow;
+        }
+
+        .nivel-4 {
+            color: green;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo del formulario */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .btn-back {
+            background-color: #d1c4e9; /* Color lila */
+            color: #6a1b9a; /* Color del texto */
+            padding: 5px 10px; /* Tamaño del botón */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block; /* Para que ocupe todo el ancho */
+            text-align: center;
+            margin: 10px auto; /* Espacio superior e inferior */
+            font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+        }
+
+        .btn-back:hover {
+            background-color: #b39ddb; /* Color al pasar el cursor */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Informe del Estudiante</h1>
+        <p><strong>Nombre:</strong> <span th:text="${nombre}"></span></p>
+        <p><strong>Apellido:</strong> <span th:text="${apellido}"></span></p>
+
+        <h2>Puntajes y Niveles</h2>
+        <p><strong>Comunicación Escrita:</strong> 
+            <span th:text="${comunicacion}"></span> 
+            <span th:class="${comunicacionLevel == 'Nivel 1' ? 'nivel-1' : (comunicacionLevel == 'Nivel 2' ? 'nivel-2' : (comunicacionLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+                <span th:text="${comunicacionLevel}"></span>
+            </span>
+        </p>
+
+        <p><strong>Razonamiento Cuantitativo:</strong> 
+            <span th:text="${razonamiento}"></span> 
+            <span th:class="${razonamientoLevel == 'Nivel 1' ? 'nivel-1' : (razonamientoLevel == 'Nivel 2' ? 'nivel-2' : (razonamientoLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+                <span th:text="${razonamientoLevel}"></span>
+            </span>
+        </p>
+
+        <p><strong>Lectura Crítica:</strong> 
+            <span th:text="${lectura}"></span> 
+            <span th:class="${lecturaLevel == 'Nivel 1' ? 'nivel-1' : (lecturaLevel == 'Nivel 2' ? 'nivel-2' : (lecturaLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+                <span th:text="${lecturaLevel}"></span>
+            </span>
+        </p>
+
+        <p><strong>Competencias Ciudadanas:</strong> 
+            <span th:text="${competencias}"></span> 
+            <span th:class="${competenciasLevel == 'Nivel 1' ? 'nivel-1' : (competenciasLevel == 'Nivel 2' ? 'nivel-2' : (competenciasLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+                <span th:text="${competenciasLevel}"></span>
+            </span>
+        </p>
+
+        <p><strong>Inglés:</strong> 
+            <span th:text="${ingles}"></span> 
+            <span th:class="${inglesLevel == 'Nivel 1' ? 'nivel-1' : (inglesLevel == 'Nivel 2' ? 'nivel-2' : (inglesLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+                <span th:text="${inglesLevel}"></span>
+            </span>
+        </p>
+
+        <p><strong>Formulación De Proyectos De Ingeniería:</strong> 
+            <span th:text="${formulacion}"></span> 
+            <span th:class="${formulacionLevel == 'Nivel 1' ? 'nivel-1' : (formulacionLevel == 'Nivel 2' ? 'nivel-2' : (formulacionLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+                <span th:text="${formulacionLevel}"></span>
+            </span>
+        </p>
+
+        <p><strong>Pensamiento Científico:</strong> 
+            <span th:text="${pensamiento}"></span> 
+            <span th:class="${pensamientoLevel == 'Nivel 1' ? 'nivel-1' : (pensamientoLevel == 'Nivel 2' ? 'nivel-2' : (pensamientoLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+                <span th:text="${pensamientoLevel}"></span>
+            </span>
+        </p>
+
+        <p><strong>Diseño De Software:</strong> 
+            <span th:text="${Diseno}"></span> 
+            <span th:class="${DisenoLevel == 'Nivel 1' ? 'nivel-1' : (DisenoLevel == 'Nivel 2' ? 'nivel-2' : (DisenoLevel == 'Nivel 3' ? 'nivel-3' : 'nivel-4'))}">
+                <span th:text="${DisenoLevel}"></span>
+            </span>
+        </p>
+
+        <button class="btn btn-light btn-back" onclick="window.history.back()">Volver</button> <!-- Botón de volver usando history -->
+    </div>
+</body>
+
+</html>
+

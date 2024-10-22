@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../img/iconoweb.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Importar fuente Poppins -->
+    <title>Ranking de Estudiantes</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Cambiar a la fuente Poppins */
+            background: url('https://cdn.pixabay.com/photo/2017/09/22/11/44/bullying-2775272_640.jpg') no-repeat center center fixed; /* Fondo de la página */
+            background-size: cover;
+            color: #333; /* Color del texto */
+        }
+
+        .container {
+            max-width: 800px; /* Aumentar el ancho para la tabla */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo del contenedor */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px; /* Ajustar el margen superior */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6a1b9a; /* Color morado */
+            font-weight: 600; /* Peso de la fuente */
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px; /* Espaciado en las celdas */
+        }
+
+        th {
+            background-color: #9c27b0; /* Color del encabezado */
+            color: white; /* Color del texto del encabezado */
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.5); /* Fondo alternativo para filas */
+        }
+
+        .btn-back {
+            background-color: #d1c4e9; /* Color lila */
+            color: #6a1b9a; /* Color del texto */
+            padding: 10px 15px; /* Tamaño del botón */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block; /* Para que ocupe todo el ancho */
+            text-align: center;
+            margin: 20px auto; /* Espacio superior e inferior */
+            font-size: 1rem; /* Tamaño de fuente */
+        }
+
+        .btn-back:hover {
+            background-color: #b39ddb; /* Color al pasar el cursor */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Ranking de Estudiantes</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Posición</th>
+                    <th>Nombre</th>
+                    <th>Puntaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="estudiante, iterStat : ${ranking}">
+                    <td th:text="${iterStat.index + 1}"></td>
+                    <td th:text="${estudiante.primerNombre} + ' ' + ${estudiante.primerApellido}"></td>
+                    <td th:text="${estudiante.puntaje}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn-back" onclick="window.history.back()">Volver</button> <!-- Botón de volver -->
+    </div>
+</body>
+
+</html>
+
